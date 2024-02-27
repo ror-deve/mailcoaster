@@ -1,0 +1,7 @@
+$("#EditUserProfileError").html("<%= j render 'shared/errors', resource: @user %>");
+$("#profile-overview").html("<%= j render 'users/profile_overview'%>");
+setTimeout(function () {
+  $("#EditUserProfileForm")[0].classList.remove("was-validated");
+  $(".loading-overlay")[0].className = "loading-overlay";
+  $("#flash").html("<%= j render 'shared/flash_messages'%>");
+}, 1000);

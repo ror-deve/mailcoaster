@@ -1,0 +1,20 @@
+<% if @deleted %>
+  <% if @folder.folder_type == 'content_image' %>
+    $("#contentImageFoldersDepth_<%= @folder.depth %>").html("<%= j render 'folders/content_image_folders', folders: @folders %>");
+  <% else %>
+      $("#folderSection").html("<%= j render 'folders/folder_tree', folders: @folders %>");  
+      setTimeout(function() {
+        var id = "<%= @parent_id %>";
+        var row = $(".noselect").find(`[data-id='${id}']`)[0];
+        if (row.className.indexOf("folderExpanded") != -1) {
+          row.className = row.className.concat(' folderSelected');
+        } else {
+          row.className = row.concat(' folderExpanded folderSelected');
+        }
+        row.click();
+      }, 1000);
+  <% end %>
+  $('#ciFolderDeleteConfirmation').modal('hide');
+  $('.modal-backdrop').hide();
+  $("#flash").html("<%= j render 'shared/flash_messages'%>");
+<% end %>

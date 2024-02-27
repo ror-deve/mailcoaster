@@ -1,0 +1,23 @@
+<div class="clearfix">
+  <div class="hint-text">
+    Showing <b><%= data.offset + 1 %></b> 
+    - <b><%= data.offset + data.length %></b> 
+    out of <b><%= data.total_entries %></b> entries
+  </div>
+
+  <ul class="pagination">
+    <li class="page-item <%= 'disabled' if data.current_page == 1 %>">
+      <%= link_to 'Previous', url_for(page: data.current_page - 1, folder_id: folder_id), remote: true, class: 'page-link' %>
+    </li>
+  
+    <% (1..data.total_pages).each do |page| %>
+      <li class="page-item <%= 'active' if page == data.current_page %>">
+        <%= link_to page, url_for(page: page, folder_id: folder_id), remote: true, class: 'page-link classtemplate-folder-linky', id: 'FolderIdSet' %>
+      </li>
+    <% end %>
+  
+    <li class="page-item <%= 'disabled' if data.current_page == data.total_pages %>">
+      <%= link_to 'Next', url_for(page: data.current_page + 1, folder_id: folder_id), remote: true, class: 'page-link' %>
+    </li>
+  </ul>
+</div>

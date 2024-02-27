@@ -1,0 +1,32 @@
+<%# locals: (folders: []) -%>
+<nav>
+  <% if params[:form_folder_id] %>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <%= link_to form_folders_account_folders_path(current_account), remote: true, class: "" do %>
+          <i class="bi bi-arrow-90deg-left"></i>&nbsp; Folders
+        <% end %>
+      </li>
+      <% folder = Folder.find(params[:form_folder_id]) %>
+      <% folder.path.each do |folder| %>
+        <li class="breadcrumb-item <%= folder.path.last == folder ? 'active' : ''%>">
+          <%= link_to form_folders_account_folders_path(current_account, form_folder_id: folder.id), remote: true, class: "" do %>
+            <%= folder.name %>
+          <% end %>
+        </li>
+      <% end %>
+    </ol>
+  <% end %>
+</nav>
+<% if folders.present? %>
+  <% folders.each do |folder| %>
+    <div class="float-start borderLightGrayMini FolderBoxMini">
+      <%= link_to form_folders_account_folders_path(current_account, form_folder_id: folder), remote: true, method: :GET, class: "folderContainerMini" do %>
+        <div class="folderIcon">
+          <%= image_tag ('folder.png')%>
+        </div>
+        <div class="folderName"><%= folder.name.truncate(10) %></div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,23 @@
+<div class="modal fade devicePreview" id="desktopPreview">
+  <div class="desk-hold">
+    <div class="desktop">
+      <div class="desktop-screen">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="outer">
+            <div class="modal-content desktop-content">
+              <div class="modal-scroll-desktop selected-value-container">
+                <% if @content_template.present? %>
+                  <%= @content_template.html_part.html_safe %>
+                <% elsif @content.id.present? %>
+                   <%= @content.html_part.html_safe %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="desktop-neck"></div>
+    <div class="desktop-base"></div>
+  </div>
+</div>

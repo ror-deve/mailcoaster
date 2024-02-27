@@ -1,0 +1,75 @@
+<div class="pagetitle">
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active">content images</li>
+    </ol>
+  </nav>
+</div>
+<div class="section">
+  <div class="card card-folders">
+    <div class="card-header">
+      <div class="row align-items-center">
+          <div class="col mr-auto">
+            <h4>Content Images</h4>
+          </div>
+          <div class="col col-auto pr-2">
+             <%= link_to new_account_folder_path(current_account, parent_id: @folder.id, object_class: "ContentImage"), method: :GET, remote: true, class: "btn btn-sm btn-theme" do %>
+              <i class="bi bi-folder-plus"></i> Add folder
+            <% end %>
+            <%= link_to new_account_content_image_path(current_account, folder_id: @folder.id, folder_depth: @folder.depth + 1), method: :GET, remote: true, class: "btn btn-sm btn-theme" do %>
+              <i class="bi bi-plus"></i>Upload Image
+            <% end %>
+            <div class="btn-group">
+              <button class="btn btn-sm btn-outline-theme" id="sortUp"><i class="bi bi-sort-up"></i></button>
+              <button class="btn btn-sm btn-outline-theme outline-none active" id="sortDown"><i class="bi bi-sort-down"></i></button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- Folders Container -->
+    <div class="card-body" id="foldersGroup">
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <%= link_to account_folders_path(current_account), class: "" do %>
+              <i class="bi bi-folder"></i>&nbsp; Folders
+            <% end %>
+          </li>
+          <% @folder.path.each do |folder| %>
+            <li class="breadcrumb-item <%= @folder.path.last == folder ? 'active' : ''%>">
+              <%= link_to account_folder_path(current_account, folder), class: "" do %>
+                <%= folder.name %>
+              <% end %>
+            </li>
+          <% end %>
+        </ol>
+      </nav>
+      <div id="contentImageFoldersDepth_<%= @folder.depth + 1%>"  class="foldersData" data-depth="<%= @folder.depth + 1%>">
+        <%= render "folders/content_image_folders", folders: @folders%>
+      </div>
+      <div id="contentImagesDepth_<%= @folder.depth + 1%>"">
+        <%= render "content_images/collection", content_images: @content_images %>
+      </div>
+      <%= render "folders/delete_confirmation" %>
+      <% if !@folders.present? && !@content_images.present? %>
+        <div class="emptyDataFolder">
+          <h6>You do not have any folder or content image available here !!!!!</h6>
+          <%= image_tag ('empty.png')%>
+        </div>
+      <% end %>
+    </div>
+    <!-- End Folders Container -->
+  </div>
+</div>
+<div class=folder-form>
+  <%= render 'folders/form', folder: @new_folder %>
+</div>
+
+<div class=content-image-form>
+  <%= render 'content_images/form', content_image: @new_content_image %>
+</div>
+
+<script>
+  FolderTreeController();
+</script>

@@ -1,0 +1,51 @@
+<div id="contentData" >
+  <div class="table-wrapper">
+    <% if @contents.present? %>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th></th>
+            <th></th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+          <tbody >
+            <% @contents.each do |content| %>
+              <tr>
+                <td><%= content.name %></td>
+                <td></td>
+                <td></td>
+                <td><%= content.created_at %></td>
+                <td><%= content.updated_at %></td>
+                <td>
+                  <%= link_to preview_account_content_path(current_account, content), method: :GET, target: "_blank", class: "preview" do %>
+                    <i class="bi bi-eye-fill" title="Preview"></i>
+                  <% end %>
+                  <%= link_to edit_account_content_path(current_account, content), class: "edit" do %>
+                    <i class="bi bi-pencil-fill" title="Edit"></i>
+                  <% end %>
+                  <%= link_to "javascript:void(0);", class:"delete contentDelete", data: { bs_toggle: "modal", bs_target: "#ciFolderDeleteConfirmation", account_id: current_account.id, content_id: content.id } do %>
+                    <i class="bi bi-trash-fill" title="Delete"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+      </table>
+    <% else %>
+      <div class="emptyList">
+        <h4>ohhh..You do not have any contents here...!</h4>
+        <%= image_tag 'empty-box.png'%>
+      </div>
+    <% end %>
+  </div>
+<div>
+
+<!-- Content Pagination-->
+<% if @contents.any? %>
+  <%= render partial: 'shared/pagination', locals: { data: @contents, folder_id: @folder_id } %>
+<% end %>
+

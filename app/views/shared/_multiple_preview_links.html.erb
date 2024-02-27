@@ -1,0 +1,21 @@
+<% if @content.present? %>
+  <%= link_to preview_account_content_path(current_account, @content), method: :GET, remote: true, class: "mobile-preview",  data: { bs_toggle: "modal", bs_target: "#mobilePreview", account_id: current_account.id, content_id: @content.id } do %>
+    <i class="bi bi-phone" title="Mobile"></i>
+  <% end %>
+  <%= link_to preview_account_content_path(current_account, @content), method: :GET, remote: true, class: "desktop-preview", data: { bs_toggle: "modal", bs_target: "#desktopPreview", account_id: current_account.id, content_id: @content.id } do %>
+    <i class="bi bi-pc-display-horizontal" title="Desktop"></i>
+  <% end %>
+  <%= link_to preview_account_content_path(current_account, @content), method: :GET, remote: true, class: "tablet-preview", data: { bs_toggle: "modal", bs_target: "#tabletPreview", account_id: current_account.id, content_id: @content.id } do %>
+    <i class="bi bi-tablet" title="Tablet"></i>
+  <% end %>
+<% elsif @content_template.present? %>
+  <%= link_to preview_account_content_template_path(current_account, @content_template), method: :GET, remote: true, class: "mobile-preview",  data: { bs_toggle: "modal", bs_target: "#mobilePreview", account_id: current_account.id, content_template_id: @content_template.id } do %>
+    <i class="bi bi-phone" title="Mobile"></i>
+  <% end %>
+  <%= link_to preview_account_content_template_path(current_account, @content_template), method: :GET, remote: true, class: "desktop-preview", data: { bs_toggle: "modal", bs_target: "#desktopPreview", account_id: current_account.id, content_template_id: @content_template.id } do %>
+    <i class="bi bi-pc-display-horizontal" title="Desktop"></i>
+  <% end %>
+  <%= link_to preview_account_content_template_path(current_account, @content_template), method: :GET, remote: true, class: "tablet-preview", data: { bs_toggle: "modal", bs_target: "#tabletPreview", account_id: current_account.id, content_template_id: @content_template.id } do %>
+    <i class="bi bi-tablet" title="Tablet"></i>
+  <% end %>
+<% end %>

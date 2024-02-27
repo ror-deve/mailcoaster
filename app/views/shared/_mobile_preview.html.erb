@@ -1,0 +1,34 @@
+<div class="modal fade devicePreview" id="mobilePreview">
+  <div class="modal-dialog modal-dialog-centered mainWrapper">
+    <div class="iPhone"> 
+      <div class="iPhone-inner">
+        <div class="iPhone-front">
+          <span class="speaker"></span>
+          <span class="front-camera"></span>
+          <div class="iPhone-screen">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="outer">
+                <div class="modal-content content modal-scroll selected-value-container">
+                  <% if @content_template.present? %>
+                    <%= @content_template.html_part.html_safe %>
+                  <% elsif @content.id.present? %>
+                    <%= @content.html_part.html_safe %>
+                  <% elsif @campaign.present? && @campaign.id.present? %>
+                    <%= @campaign.html_part.html_safe %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="btns-iphone">
+            <span class="slider"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+
+</style>

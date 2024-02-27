@@ -1,0 +1,62 @@
+<div class="pagetitle">
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active">Domains</li>
+    </ol>
+  </nav>
+</div>
+
+<section class="section objectDataList" data-object-class="<%= modal_class %>">  
+  <div class="col-lg-12 col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="row align-items-center">
+          <div class="col mr-auto">
+            <h4><%= @domain.name %></h4>
+          </div>
+          <div class="col col-auto pr-2">
+            <%= link_to verify_account_domain_path(current_account, @domain), method: :POST, remote: false, class: "btn btn-sm btn-theme" do %>
+              <i class="bi bi-check-lg"></i> Verify
+            <% end %>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card-body">
+        Please install the following records and click on the Verify button to complete the verification process.
+
+        <div class="ListTableData">
+          <div class="row">
+            <div class="col-lg-12">
+              <div id="domainDnsData" >
+                <div class="table-wrapper m-10">
+                  <table class="table table-striped table-hover table-responsive table-fixed">
+                    <thead>
+                      <tr>
+                        <th>Type</th>
+                        <th>Host</th>
+                        <th>Value</th>
+                        <th>Verified</th>
+                      </tr>
+                    </thead>
+                    <tbody >
+                      <% @domain.dns_records.each do |record| %>
+                        <tr>
+                          <td><%= record.record_type %></td>
+                          <td><%= record.hostname %></td>
+                          <td><%= record.value %></td>
+                          <td><%= record.verified %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              <div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

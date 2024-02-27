@@ -1,0 +1,6 @@
+<% if @deleted %>
+  $("#contentImagesDepth_<%= @folder_depth %>").html("<%= j render "content_images/collection", content_images: @content_images %>");
+  $('#ciFolderDeleteConfirmation').modal('hide');
+  $('.modal-backdrop').hide();  
+<% end %>
+$("#flash").html("<%= j render 'shared/flash_messages'%>");

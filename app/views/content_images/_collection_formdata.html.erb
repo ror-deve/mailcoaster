@@ -1,0 +1,19 @@
+<%# locals: (content_images: []) -%>
+<% if content_images.present? %>
+  <% content_images.each do |content_image| %>
+    <div class="float-start borderLightGrayMini contentImageFolderBoxMini">
+      <a class="contentImageBoxLink">
+        <div class="contentImageBoxMini">
+          <%= image_tag content_image.image %>
+        </div>
+      </a>
+    </div>
+  <% end %>
+<% else %>
+  <div class="contentImageEmptyBox">
+    <% if params[:form_folder_id].present? %>
+      <p>This folder is does not contain any image..!</p>
+      <%= image_tag ('empty-folder.png') %>
+    <% end %>
+  </div>
+<% end %>

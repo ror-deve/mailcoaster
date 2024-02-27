@@ -1,0 +1,13 @@
+<% folder ||= Folder.new %>
+<% if folders.present? %>
+  <div class="treeContainer tree noselect">
+    <%= folder_tree_html(folders.arrange) %>
+  </div>
+<% end %>
+<div class=folder-form>
+  <%= render 'folders/form', folder: folder %>
+</div>
+
+<script>
+  FolderTreeController()
+</script>

@@ -1,0 +1,5 @@
+<% if @lists.any? %>
+  $("#listData").html("<%= j render 'list_data', lists: @lists %>");
+<% else %>
+  $("#listData").html("No lists found.");
+<% end %>

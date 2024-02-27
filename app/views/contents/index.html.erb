@@ -1,0 +1,50 @@
+
+<div class="pagetitle">
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active">Contents</li>
+    </ol>
+  </nav>
+</div>
+
+<section class="section objectDataList" data-object-class="<%= modal_class %>">  
+  <div class="col-lg-12 col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="row align-items-center">
+          <div class="col mr-auto">
+            <h4>Contents</h4>
+          </div>
+          <div class="col col-auto pr-2">
+            <%= link_to new_template_account_contents_path(current_account), method: :GET, remote: true, class: "btn btn-sm btn-theme" do %>
+              <i class="bi bi-plus-circle-fill"></i> Add Content
+            <% end %>
+          </div>
+        </div>
+      </div>
+      
+      <div class="container-fluid ListTableData">
+        <div class="row">
+          <div class="col-lg-3">
+            <%= render "folders/folders", folders: @folders %>
+          </div>
+
+          <div class="col-lg-9">
+            <!-- Content Data-->
+            <%= render "contents/content_data" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<%= render "contents/new_content_modal"%>
+<%= render "folders/delete_confirmation" %>
+<script>
+  ContentController();
+</script>
+
+<style>
+
+</style>

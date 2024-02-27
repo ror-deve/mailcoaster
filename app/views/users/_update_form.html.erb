@@ -1,0 +1,48 @@
+<%= form_with url: "/users/update_profile", method: :patch, local: false, html: { novalidate: true, class: "row g-3 needs-validation" }, id: "EditUserProfileForm" do |f| %>
+  <div id="EditUserProfileError"></div>
+  <div id="UpdateForm">
+    <div class="row mb-3">
+      <label for="firstName" class="col-md-4 col-lg-3 col-form-label">First Name</label>
+      <div class="col-md-8 col-lg-9">
+        <%= f.text_field "user[first_name]", type: "text", id: "first_name",class: "form-control", required: true, value: current_user.first_name  %>
+        <div class="invalid-feedback">First name can't be blank.</div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="lastName" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
+      <div class="col-md-8 col-lg-9">
+        <%= f.text_field "user[last_name]", type: "text", id: "last_name",class: "form-control", required: true, value:current_user.last_name %>
+        <div class="invalid-feedback">Last name can't be blank.</div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
+      <div class="col-md-8 col-lg-9">
+        <%= f.text_field "user[country]", type: "text", id: "country",class: "form-control", required: true, value:current_user.country %>
+        <div class="invalid-feedback">Country can't be blank.</div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="State" class="col-md-4 col-lg-3 col-form-label">State</label>
+      <div class="col-md-8 col-lg-9">
+        <%= f.text_field "user[state]", type: "text", id: "state",class: "form-control", required: true, value:current_user.state %>
+        <div class="invalid-feedback"> State can't be blank.</div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+      <div class="col-md-8 col-lg-9">
+        <%= f.text_field "user[phone]", type: "text", id: "phone", class: "form-control", required: true, value:current_user.phone %>
+        <div class="invalid-feedback"> Phone number can't be blank .</div>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <%= f.submit "Save Changes", class: "btn btn-theme", id: "SaveProfileButton" %>
+    </div>
+  </div>
+<% end %>

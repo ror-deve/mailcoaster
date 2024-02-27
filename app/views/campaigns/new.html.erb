@@ -1,0 +1,32 @@
+<div class="pagetitle">
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item">Campaigns</li>
+      <li class="breadcrumb-item active">new</li>
+    </ol>
+  </nav>
+</div>
+
+<section class="section">  
+  <div class="col-lg-12 col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="row align-items-center">
+          <div class="col mr-auto">
+            <h4>New Campaign </h4>
+          </div>
+          <div class="col mr-auto col-lg-2">
+            <%= render 'shared/new_preview_link' %>
+          </div>
+          <div class="col col-auto pr-2"></div>
+        </div>
+      </div>
+      <%= render 'campaigns/campaign_form' %>
+    </div>
+  </div>
+</section>
+ 
+<script>
+  CampaignController();
+</script>

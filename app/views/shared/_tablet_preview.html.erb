@@ -1,0 +1,26 @@
+<div class="modal fade devicePreview" id="tabletPreview">
+  <div class="container">
+    <div class="tablet-wrapper">
+      <div class="tablet-screen">
+        <div class="apps-wrapper">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="outer">
+              <div class="modal-content content-tablet modal-scroll selected-value-container">
+                <% if @content_template.present? %>
+                  <%= @content_template.html_part.html_safe %>
+                <% elsif @content.id.present? %>
+                  <%= @content.html_part.html_safe %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="house"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+
+</style>

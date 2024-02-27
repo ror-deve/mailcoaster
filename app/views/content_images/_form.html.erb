@@ -1,0 +1,54 @@
+<div class="modal fade" id="uploadConentImage" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title"><b>Upload Content Image</b></h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <%= form_with model: content_image, url: [current_account, content_image], local: false, html: { multipart: true } do |form| %>
+        <div class="modal-body">
+          <div id="ContentImageErrors"></div>
+          <div class="modalIllustration">
+            <%= image_tag 'image-upload.png', class: "modalIllustrationImg"%>
+          </div>
+          <% unless content_image.persisted? %>
+            <%= form.hidden_field :folder_depth, value: params[:folder_depth] %>
+            <%= form.hidden_field :folder_id, value: form.object.folder_id %>
+          <% end %>
+          <div class="col-12">
+            <table class="table table-borderless contentImageFormTable">
+              <tr>
+                <td><label class="contentImageLabel">Image 1</label></td>
+                <td class="">
+                  <%= file_field_tag "content_images[]", class: "form-control contentImageField" %>
+                  <div class="ci-error-message">Please choose image to uplad.</div>
+                </td>
+                <td>
+                  <%= link_to  "#", class: 'contentImageRemove' do %>
+                    <i class="bi bi-trash-fill"></i>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <%= link_to "#", id: "addNewFileInput", class: 'btn btn-sm btn-theme' do %>
+                    <i class="bi bi-plus"></i>
+                  <% end %>
+                </td>
+              </td>
+            </table>
+            
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-theme btn-sm" id="uploadImgButton">upload</button>
+          <%= form.submit "upload", class: "d-none", id: "submitUploadImgButton"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script>
+  ContentImageController();
+</script>

@@ -1,0 +1,46 @@
+<p>I am Step2 form </p>
+<%= form_with model: @campaign, url: wizard_path(:step2), method: :put, html: { novalidate: true, class: "g-3 needs-validation" } do |form| %>
+  <div class="container-fluid campaignTemplateForm">
+    <div class="row">
+      <%= form.hidden_field :folder_id, value: params[:folder_id], id: 'FolderIdSetCampaign'%>
+      <%= form.hidden_field :account_id, value: params[:account_id] %>
+      <div class="col-lg-3">
+        <div class="formContainer">
+          <div class="row g-3">
+            <div class="col-12">
+              <label for="ctname" class="form-label">Name</label>
+              <%= form.text_field :name, autocomplete: "name", class: "form-control", id: "ctname", required: true, value: params[:name]%>
+              <div class="invalid-feedback">Please enter the name.</div>
+            </div>
+            
+            <div class="col-12">
+              <label for="content_id" class="form-label">Content</label>
+              <%= form.collection_select :content_id, Content.all, :id, :name, { prompt: "Select content" }, { class: "form-control", required: true } %>
+              <div class="invalid-feedback">Please select a content.</div>
+            </div>
+
+            <div class="col-12">
+              <label for="" class="form-label">Available Images</label>
+              <%= render "content_templates/content_images_formdata", folders: @folders, content_images: @content_image %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="editorContainer">
+          <%= form.text_area :html_part, id: "campaignHtmlPart", required: true %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="float-end p-3">
+    <%= link_to previous_wizard_path, class: "btn btn-secondary btn-sm"  do %>
+      Previous
+    <% end %>
+    <%= form.submit "Save & Next", class: "btn btn-theme btn-sm"%>
+  </div>
+<% end %>
+
+<script>
+  CampaignController();
+</script>

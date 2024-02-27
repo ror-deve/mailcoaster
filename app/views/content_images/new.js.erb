@@ -1,0 +1,4 @@
+<% if @new_content_image %>
+  $(".content-image-form").html("<%= j render 'content_images/form', content_image: @new_content_image %>");
+  $('#uploadConentImage').modal('show');
+<% end %>

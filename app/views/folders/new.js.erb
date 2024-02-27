@@ -1,0 +1,4 @@
+<% if @new_folder %>
+  $(".folder-form").html("<%= j render 'folders/form', folder: @new_folder %>");
+  $('#createFolder').modal('show');
+<% end %>

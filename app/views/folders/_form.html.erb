@@ -1,0 +1,32 @@
+<div class="modal fade" id="createFolder" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title"><%= action_name == 'new' ? 'New Folder' : 'Edit folder'%></h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <%= form_with model: folder, url: [current_account, folder], local: false, html: { novalidate: true, class: "g-3 needs-validation" } do |form| %>
+        <div class="modal-body">
+          <div id="folderErrors"></div>
+          <div class="modalIllustration">
+            <%= image_tag (action_name == 'new' ? 'add-folder.png' : 'edit-folder.png'), class: "modalIllustrationImg"%>
+          </div>
+          <%= form.hidden_field :object_class, value: params[:object_class] %>
+          <% unless folder.persisted? %>
+            <%= form.hidden_field :parent_id, value: form.object.parent_id %>
+            <%= form.hidden_field :folder_type, value: params[:object_class]&.underscore %>
+          <% end %>
+          <div class="col-12">
+            <label for="Foldername" class="form-label">Name</label>
+            <%= form.text_field :name, autocomplete: "name", class: "form-control", id: "Foldername", required: true%>
+            <div class="invalid-feedback">Please enter folder name.</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+          <%= form.submit "Save", class: "btn btn-theme btn-sm"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

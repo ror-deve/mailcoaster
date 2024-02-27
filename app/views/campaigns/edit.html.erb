@@ -1,0 +1,70 @@
+<div class="pagetitle">
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item">Campaign</li>
+      <li class="breadcrumb-item active">edit</li>
+    </ol>
+  </nav>
+</div>
+
+<section class="section">  
+  <div class="col-lg-12 col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="row align-items-center">
+          <div class="col mr-auto">
+            <h4>Edit Campaign </h4>
+          </div>
+          <div class="col mr-auto col-lg-2">
+            <%= render 'shared/multiple_preview_links' %>
+          </div>
+          <div class="col col-auto pr-2"></div>
+        </div>
+      </div>
+        <%= form_with model: @campaign, url: [current_account, @campaign], html: { novalidate: true, class: "g-3 needs-validation" } do |form| %>
+          <div class="container-fluid campaignTemplateForm">
+            <div class="row">
+              <%= form.hidden_field :folder_id, value: @campaign.folder_id if @campaign.folder_id.present? %>
+              <%= form.hidden_field :account_id, value: @campaign.account_id %>
+              <div class="col-lg-3">
+                <div class="formContainer">
+                  <div class="row g-3">
+                    <div class="col-12">
+                      <label for="ctname" class="form-label">Name</label>
+                      <%= form.text_field :name, autocomplete: "name", class: "form-control", id: "ctname", required: true, value: @content.name %>
+                      <div class="invalid-feedback">Please enter the name.</div>
+                    </div>
+                    <div class="col-12">
+                      <label for="content_template_id" class="form-label">Content Template</label>
+                      <%= form.select :content_template_id, options_for_select(@content_template_list, nil), { include_blank: 'Search for edit content template' }, { class: "form-control content-template-search", id: "content-template-search", data_account_id: @content.account_id, data: { content_template_id: @content.content_template_id } } %>
+                    </div>
+                    <div class="col-12">
+                      <label for="" class="form-label">Available Images</label>
+                      <%= render "content_templates/content_images_formdata", folders: @folders, content_images: @content_image %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-9">
+                <div class="editorContainer">
+                  <%= form.text_area :html_part, autocomplete: "html_part", id: "campaignHtmlPart", required: true %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="float-end p-3">
+            <%= link_to account_campaigns_path(current_account), method: :GET, class: "btn btn-secondary btn-sm"  do %>
+              Cancel
+            <%end%>
+            <%= form.submit "Update", class: "btn btn-theme btn-sm"%>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</section>
+ 
+
+<script>
+  CampaignController();
+</script>

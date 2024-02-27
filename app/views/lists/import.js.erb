@@ -1,0 +1,4 @@
+$(document).ready(function() {
+  $('#listmodal').html('<%= j render 'import_modal', list: @list %>');
+  $('#csvImportModal').modal('show');
+});

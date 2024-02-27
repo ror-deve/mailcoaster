@@ -1,0 +1,22 @@
+<%# locals: (folders: []) -%>
+<% if folders.present? %>
+  <% folders.each do |folder| %>
+    <div class="float-start borderLightGray contentImageFolderBox">
+      <a href="javascript:void(0);" class="contentFolderDelete" data-bs-toggle="modal" data-bs-target="#ciFolderDeleteConfirmation">
+        <%= image_tag ('trash.png'), data: { id: "#{folder.id}", account_id: "#{folder.account_id}", object_class: "ContentImage" } %>
+      </a>
+      <div class="ContentFolderLinks">
+        <a class='contentFolderInfo'><i class="bi bi-info-circle"></i> Info</a>
+        <%= link_to edit_account_folder_path(current_account, folder, object_class: "ContentImage"), method: :get, remote: true, class: "contentFolderEdit" do %>
+          <i class="bi bi-pencil"></i> Rename
+        <% end %>
+      </div>
+      <%= link_to account_folder_path(current_account, folder), method: :GET, class: "folderContainer" do %>
+        <div class="folderIcon">
+          <%= image_tag ('folder.png')%>
+        </div>
+        <div class="folderName"><%= folder.name.truncate(10) %></div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

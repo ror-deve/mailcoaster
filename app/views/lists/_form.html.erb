@@ -1,0 +1,66 @@
+<div id="new-list-form">
+  <%= form_with model:@list, url:[current_account, @list] , html: { novalidate: true, class: "g-3 needs-validation" } do |form| %>
+    <div class="container-fluid contentTemplateForm">
+      <div class="row">
+        <div class="col-lg-10">
+          <div class="formContainer">
+            <div class="row g-3">
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-6">
+                    <%= form.hidden_field :name, value: params[:name] ||= @list.name %>  
+                    <label for="from_name" class="form-label">From Name</label>
+                    <%= form.text_field :from_name, class: "form-control", id: "from_name", value: @list.from_name%>
+                    <div class="invalid-feedback">Please enter from name.</div>
+                  </div>
+                  <div class="col-6">
+                    <label for="from_email" class="form-label">List Email</label>
+                    <%= form.text_field :from_email, class: "form-control", id: "from_email", value: @list.from_email%>
+                    <div class="invalid-feedback">Please enter from name.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-6">
+                    <label for="reply_to_email" class="form-label">Reply To</label>
+                    <%= form.text_field :reply_to_email, class: "form-control", id: "reply_to_email", value: @list.reply_to_email %>
+                    <div class="invalid-feedback">Please enter reply to.</div>
+                  </div>
+                  <div class="col-6">
+                    <label for="language" class="form-label">Language</label>
+                    <%= form.select :language, List.languages.keys.map { |lang| [lang.capitalize, lang] }, {}, class: "form-control", id: "language", required: true, value: @list.language%>
+                    <div class="invalid-feedback">Please enter the language.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-6">
+                    <label for="list_type" class="form-label">List Type</label>
+                    <%= form.select :list_type, List.list_types.keys.map { |type| [type.capitalize, type] }, {}, class: "form-control", id: "list_type", value: @list.list_type%>
+                  </div>
+                  <div class="col-6">
+                    <label for="add_to_unsubscribe_page" class="form-label">Add To Unsubscribe</label>
+                    <%= form.select :add_to_unsubscribe_page, List.unsubscribes.map { |k, v| [k.capitalize, v] }, {}, class: "form-control", id: "add_to_unsubscribe_page", value: @list.add_to_unsubscribe_page%>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="address" class="form-label">Address</label>
+                <%= form.text_field :address, class: "form-control", id: "address", required: true, value: @list.address%>
+                <div class="invalid-feedback">Please enter the address.</div>
+              </div>
+              <div class="col-12">
+                <label for="post_url" class="form-label">post_url</label>
+                <%= form.text_field :post_url, class: "form-control", id: "post_url", value: @list.post_url%>
+              </div>
+              <div class="col-12">
+                <%= form.submit "Save", class: "btn btn-theme btn-sm float-end p-2"%>
+              </div>
+            </div>     
+        </div>
+      </div>  
+    </div>
+  <% end %>
+</div>

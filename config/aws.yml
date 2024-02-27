@@ -1,0 +1,13 @@
+production:
+  access_key_id: <%= ENV["MC_ACCESS_KEY_ID"] %>
+  secret_access_key: <%= ENV["MC_AWS_SECRET_ACCESS_KEY"] %>
+  # TODO: change this to actual region when we have aws ready
+  region: us-east-1
+  bucket: mailcoaster-prod
+
+development:
+  access_key_id: C9c5hz2UUtwxhzYAn12y
+  secret_access_key: FJbIpzprYcRIILIld5tuLV4PfkRKZjEF7FTOR6c2 
+  region: us-east-1
+  bucket: mailcoaster
+  s3_endpoint: http://127.0.0.1:9000

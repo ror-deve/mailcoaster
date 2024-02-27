@@ -1,0 +1,31 @@
+<div class="modal fade" id="newContent" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title">New Content</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <%= form_with url: new_account_content_path(current_account), method: :get, html: { novalidate: true, class: "g-3 needs-validation" } do |form| %>
+        <div class="modal-body">
+          <div class="modalIllustration">
+            <%= image_tag 'create-content-template.png', class: "modalIllustrationImg"%>
+          </div>  
+          <div class="col-12">
+            <label for="ctname" class="form-label">Name</label>
+            <%= form.text_field :name, autocomplete: "name", class: "form-control", id: "ctname", required: true%>
+            <div class="invalid-feedback">Please enter name.</div>
+          </div>
+          <%= form.hidden_field :folder_id, id: "contentFolderId"%>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+          <%= form.submit "Continue", class: "btn btn-theme btn-sm"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<style>
+
+</style>

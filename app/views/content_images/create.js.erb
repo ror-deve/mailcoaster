@@ -1,0 +1,9 @@
+<% if @errors %>
+  $("#ContentImageErrors").html("<%= j render 'shared/custom_errors', resource: @errors %>");
+<% else %>
+  $("#contentImagesDepth_<%= @folder_depth %>").html("<%= j render "content_images/collection", content_images: @content_images%>");
+  $('#uploadConentImage').modal('hide');
+  $('.modal-backdrop').hide();
+  $(".emptyDataFolder").hide();
+  $("#flash").html("<%= j render 'shared/flash_messages'%>");
+<% end %>

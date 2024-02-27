@@ -1,0 +1,52 @@
+<div class="pagetitle">
+  <h1>Dashboard</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item active">Dashboard</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+<section class="section dashboard">
+  <div class="row">
+
+    <!-- Left side columns -->
+    
+    <div class="col-lg-12">
+      <div class="row">
+        <!-- Account Users -->
+        <div class="col-12">
+          <div class="card recent-sales overflow-auto">
+            <div class="card-body">
+              <h5 class="card-title">Account Users <span>| Active users</span></h5>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if @users.present? %>
+                    <% @users.each do |user| %>
+                      <tr>
+                        <th scope="row"><%= user.id %></th>
+                        <td><%= user.username %></td>
+                        <td><%= user.first_name %></td>
+                        <td><%= user.last_name %></td>
+                        <td><span class="badge bg-success"><%= user.active ? 'Active' : 'Inactive' %></span></td>
+                      </tr>
+                    <% end %>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div><!-- End Account Users -->
+      </div>
+    </div><!-- End Left side columns -->
+  </div>
+</section>

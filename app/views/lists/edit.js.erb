@@ -1,0 +1,3 @@
+<% if @list %>
+  $("#new-list-form").html("<%= j render 'form', list: @list %>");
+<% end %>

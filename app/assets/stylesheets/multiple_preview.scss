@@ -1,0 +1,328 @@
+.mobile-preview {
+  right: 138px;
+  position: absolute;
+  font-size: 25px;
+  top: 20px;
+  color: #e7ac3f;
+}
+
+.desktop-preview {
+  right: 60px;
+  top: 20px;
+  position: absolute;
+  font-size: 25px;
+  color: #e7ac3f;
+}
+
+.tablet-preview {
+  right: 100px;
+  position: absolute;
+  font-size: 25px;
+  top: 20px;
+  color: #e7ac3f;
+}
+
+.mobile-preview:hover,
+.desktop-preview:hover,
+.tablet-preview:hover {
+  color: #9b6500;
+  ;
+}
+
+.devicePreview {
+  .mainWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .contents {
+    color: #111;
+    margin: 0 0 3rem 0;
+    text-shadow: 0 4px 5px rgba(0, 0, 0, .3);
+    text-align: center;
+  }
+
+  .iPhone {
+    width: 280px;
+    height: 560px;
+    position: relative;
+    perspective: 1000px;
+    background-color: transparent;
+  }
+
+  .iPhone-inner {
+    transition: transform .8s;
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .6);
+    border-radius: 30px;
+  }
+
+  .iPhone-front {
+    background-color: seashell;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+
+  .content {
+    width: 265px;
+    background: white;
+    position: absolute;
+    top: -49px;
+    height: 525px;
+    left: -132px;
+    padding: 10px;
+  }
+
+  .content-tablet {
+    width: 717px;
+    background: white;
+    position: absolute;
+    top: -30px;
+    height: 435px;
+    left: -9px;
+    padding: 10px;
+  }
+
+  #desktopPreview .modal-scroll {
+    overflow-y: auto;
+  }
+
+  .modal-scroll {
+    overflow-y: scroll;
+    border-radius: 15px;
+  }
+
+  .modal-scroll-desktop {
+    overflow-y: scroll;
+    border-radius: 15px;
+    border: 0px solid #666;
+  }
+
+  .modal-scroll-desktop::-webkit-scrollbar {
+    width: 12px;
+    background-color: transparent;
+  }
+
+  .modal-scroll-desktop::-webkit-scrollbar-thumb {
+    background-color: hidden;
+    border-radius: 6px;
+  }
+
+  .modal-scroll::-webkit-scrollbar {
+    width: 12px;
+    background-color: transparent;
+  }
+
+  .modal-scroll::-webkit-scrollbar-thumb {
+    background-color: hidden;
+    border-radius: 6px;
+  }
+
+  .outer {
+    border-radius: 20px;
+    border: hidden;
+    overflow: hidden;
+  }
+
+  .iPhone-front {
+    padding: 8px;
+    border-radius: 30px;
+
+    &::before {
+      background-color: seashell;
+      content: '';
+      display: block;
+      width: 52%;
+      height: 20px;
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+      position: absolute;
+      top: 7px;
+      left: 50%;
+      transform: translatex(-50%);
+    }
+  }
+
+  .speaker {
+    position: absolute;
+    height: 5px;
+    background-color: #1f1f1f;
+    width: 25%;
+    display: inline-block;
+    top: 12px;
+    left: 50%;
+    transform: translatex(-50%);
+  }
+
+  .front-camera {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 9px;
+    left: 66%;
+    border-radius: 50%;
+    background-color: #1f1f1f;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 5px;
+      height: 5px;
+      background-color: #000;
+      border-radius: 50%;
+
+    }
+
+  }
+
+  .iPhone-screen {
+    background-color: #FFFFFF;
+    background-size: cover;
+    border-radius: 24px;
+    height: 100%;
+    margin: 0 auto;
+    width: 100%;
+    padding: 2.5rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .btns-iphone {
+    margin-top: auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+
+  .slider {
+    height: 4px;
+    width: 35%;
+    background-color: rgb(0, 0, 0);
+    align-self: flex-end;
+    margin-bottom: 0.5rem;
+    position: absolute;
+    top: 540px;
+    right: 100px;
+  }
+
+  .container {
+    max-width: 940px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .tablet-wrapper {
+    margin: 48px auto;
+    width: 800px;
+    height: 530px;
+    border-radius: 30px;
+    background-color: seashell;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tablet-screen {
+    width: 700px;
+    height: 400px;
+    background-color: #fff;
+    position: relative;
+    top: 50px;
+    left: 50px;
+  }
+
+  .house {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    bottom: -50px;
+    left: 305px;
+    cursor: pointer;
+  }
+
+  .house:before {
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    width: 20px;
+    height: 15px;
+    left: 15px;
+    top: 22.5px;
+  }
+
+  .house:after {
+    content: "";
+    position: absolute;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid #fff;
+    top: 9px;
+    left: 10px;
+  }
+
+  .desk-hold {
+    width: 600px;
+    height: 238px;
+    margin: 0 auto;
+    margin-top: 55px;
+  }
+
+  .desktop {
+    width: 206px;
+    height: 200px;
+    margin-left: 200px;
+    z-index: -3;
+  }
+
+  .desktop-screen {
+    width: 700px;
+    height: 330px;
+    position: absolute;
+    right: 420px;
+    border: 3px solid seashell;
+    background: seashell;
+    box-shadow: inset 10px -10px 0px 29px seashell;
+  }
+
+  .desktop-base {
+    width: 175px;
+    height: 20px;
+    position: absolute;
+    top: 475px;
+    right: 690px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border: 3px solid seashell;
+    margin: 0px auto;
+  }
+
+  .desktop-neck {
+    width: 73px;
+    height: 96px;
+    position: absolute;
+    right: 740px;
+    top: 385px;
+    border: 3px solid seashell;
+    margin: -3px auto;
+  }
+
+  .desktop-content {
+    position: absolute;
+    width: 660px;
+    height: 290px;
+    top: -12px;
+    right: 15px;
+    padding: 10px;
+  }
+}

@@ -1,0 +1,2 @@
+<%# locals: (circle: 'false') -%>
+<%= image_tag current_user.avatar.attached? ? current_user.avatar : 'avatar.png', alt: "", class: "img-thumbnail #{circle == true ? 'rounded-circle' : ''}"  %>

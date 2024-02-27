@@ -1,0 +1,22 @@
+<% if @folder && @folder.errors.blank? %>
+  <% if @folder.folder_type == 'content_image' %>
+    $("#contentImageFoldersDepth_<%= @folder.depth %>").html("<%= j render 'folders/content_image_folders', folders: @folders %>");
+  <% else %>
+    $("#folderSection").html("<%= j render 'folders/folder_tree', folders: @folders %>");
+    setTimeout(function() {
+      var id = "<%= @folder.id %>";
+      var row = $(".noselect").find(`[data-id='${id}']`)[0];
+      if (row.className.indexOf("folderExpanded") != -1) {
+        row.className = row.className.concat(' folderSelected');
+      } else {
+        row.className = row.concat(' folderExpanded folderSelected');
+      }
+      row.click();
+    }, 1000);
+  <% end %>
+  $('#createFolder').modal('hide');
+  $('.modal-backdrop').hide();
+  $("#flash").html("<%= j render 'shared/flash_messages'%>")
+<% else %>
+  $("#folderErrors").html("<%= j render 'shared/errors', resource: @folder %>");
+<% end %>

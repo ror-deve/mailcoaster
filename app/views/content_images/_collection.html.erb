@@ -1,0 +1,20 @@
+<%# locals: (content_images: []) -%>
+<% if content_images.present? %>
+  <% content_images.each do |content_image| %>
+    <div class="float-start borderLightGray contentImageFolderBox">
+      <a href="javascript:void(0);" class="contentImageDelete" data-bs-toggle="modal" data-bs-target="#ciFolderDeleteConfirmation">
+        <%= image_tag ('trash.png'),
+          data: { 
+            id: "#{content_image.id}",
+            account_id: "#{content_image.account_id}",
+            folder_id: "#{content_image.folder_id}"
+          } %>
+      </a>
+      <a class="contentImageBoxLink">
+        <div class="contentImageBox">
+          <%= image_tag content_image.image %>
+        </div>
+      </a>
+    </div>
+  <% end %>
+<% end %>

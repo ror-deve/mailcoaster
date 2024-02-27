@@ -1,0 +1,13 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+// custom style
+@import 'style';
+@import 'override';
+@import 'croppie';
+@import 'loader';
+@import 'folder_tree';
+@import 'content_image';
+@import 'table_list';
+@import 'select2/dist/css/select2.css';
+@import 'multiple_preview'
